@@ -1,0 +1,84 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+using namespace std ;
+void keepname(vector<string> &,string ) ;
+void keepword1(vector<string> &,string ) ;
+void keepword2(vector<string> &,string ) ;
+void keepword3(vector<string> &,string ) ;
+void swap(vector<int> score,int x,int y){
+    int  temp = score[x] ;
+    score[x] = score[y] ;
+    score[y] = temp ;
+}
+
+
+void show(vector<int> score,int N){
+    for(int i=0 ; i<N ; i++){
+        cout << score[i] << "   " ;
+    }
+    cout << endl ;
+}
+void moveMax(vector<int> score,int e){
+    for(int i=0 ; i<e-1;i++){
+        if(score[i]<score[i+1]) swap(score,i,i+1) ;
+//        cout << i ;
+    }
+}
+void bubblesort(vector<int> score,int N){
+    for(int end = N ; end > 1 ; end--){
+        moveMax(score,end) ;
+        show(score,N) ;
+    }
+}
+
+int main(){
+    vector<string> name ;
+    vector<int> score = {6,1,4,9,3};
+    vector<string> easyword ;
+    vector<string> medword ;
+    vector<string> hardword ;
+    string N ;
+//    int sc ;
+    cout << "Enter your name : " ;
+    cin >> N ;
+    keepname(name,N) ;
+//    cout << name[0] ;
+    cout << "Enter your score : " ;
+    bubblesort(score,score.size()) ;
+
+//    sort(score.begin(),score.end()) ;
+//    show(score,score.size()) ;
+    ifstream word1("easywords.txt") ;
+    string s ;
+    while(getline(word1,s)){
+        keepword1(easyword,s) ;
+    }
+    ifstream word2("medwords.txt") ;
+    string s2 ;
+    while(getline(word2,s2)){
+        keepword2(medword,s2) ;
+    }
+    ifstream word3("hardwords.txt") ;
+    string s3 ;
+    while(getline(word3,s3)){
+        keepword3(hardword,s3) ;
+    }
+    word1.close() ;
+    word2.close() ;
+    word3.close() ;
+    return 0 ;
+}
+void keepname(vector<string> &name,string N){
+    name.push_back(N) ;
+}
+void keepword1(vector<string> &easyword,string s){
+    easyword.push_back(s) ;
+}
+void keepword2(vector<string> &medword,string s2){
+    medword.push_back(s2) ;
+}
+void keepword3(vector<string> &hardword,string s3){
+    hardword.push_back(s3) ;
+}
