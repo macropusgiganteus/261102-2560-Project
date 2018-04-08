@@ -1,11 +1,29 @@
 #include <fstream>
-using namespace std;
+
+struct variable{
+	vector<string> name ;
+    vector<int> score ;
+    vector<float> time;
+    string word,cmd;
+	string status;
+	char newtry;
+    int R=0;
+    float timer;
+};
+
 
 void keepname(vector<string> &name,string N){
     name.push_back(N) ;
 }
-void keepword(vector<string> &word,string s){
-    word.push_back(s) ;
+void keepword(vector<string> &word,string w){
+    word.push_back(w) ;
+}
+
+void keepscore(vector<int> &score,int s){
+	score.push_back(s) ;
+}
+void keeptime(vector<float> &time,float t){
+	time.push_back(t) ;
 }
 
 struct Words{
@@ -14,11 +32,6 @@ struct Words{
     vector<string> hardword ;
 };
 
-struct player{
-	string name;
-	int score=0;
-	float time=0;
-};
 
 void keepinfo(Words &w){
     ifstream word1("easywords.txt") ;
@@ -51,6 +64,16 @@ void keepinfo(Words &w){
     word1.close() ;
     word2.close() ;
     word3.close() ;
+}
+
+void sortRank(variable &v){
+	for(int i=0;i<v.score.size()-1;i++){
+		if(v.score[i]<v.score[i+1]) {
+			swap(v.score[i],v.score[i+1]);
+			swap(v.name[i],v.name[i+1]);
+			swap(v.time[i],v.time[i+1]);
+		}
+	}
 }
 
 

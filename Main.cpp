@@ -1,3 +1,4 @@
+using namespace std;
 #include<iostream>
 #include<ctime>
 #include<string>
@@ -5,31 +6,34 @@
 #include<cstdlib>
 #include <algorithm>
 #include<iomanip>
+#include"status.h"
 #include "infotovector.h"
 #include "checkword1.h"
-using namespace std;
 
 
 int main(){
-	vector<string> name ;
-    vector<int> score ;
-    player typer;
-    string word,cmd;
-	string status="alive";
-    Words allword;
-    float timer;
+	Words allword;
+	variable v;
 	keepinfo(allword) ; 
-	cout<<"	---------------------------------------------------------------------------------------------"<<endl;
-    cout<<"						Enter your name : " ;
-    cin >> typer.name ;
-    keepname(name,typer.name);
+	do{
+		Unit typer;
+		cout<<"	---------------------------------------------------------------------------------------------"<<endl;
+    	cout<<"						Enter your name : " ;
+    	cin >> typer.hero.name ;
+    	keepname(v.name,typer.hero.name);
     //start typing
-    do{
-	    word=randword(allword);
-		inputword(word,timer,cmd,typer);	
-		if(cmd=="exit") break;
-	}while(status!="dead");
-	cout<<"	---------------------------------------------------------------------------------------------"<<endl;
+	    do{
+		    v.word=randword(allword);
+			inputword(v,typer);	
+			if(v.cmd=="exit"||v.cmd=="newtry") break;
+		}while(v.status!="dead");
+		cout<<"\n"<<"					Do you want to try again? Y/N : ";
+		cin>>v.newtry;
+		v.newtry=toupper(v.newtry);
+		v.R++;
+			cout<<"	---------------------------------------------------------------------------------------------"<<endl;
+	}while(v.newtry!='N');
+	
 	return 0;
 }
 

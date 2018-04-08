@@ -1,5 +1,3 @@
-using namespace std;
-
 bool check_same_word(int N,int wordloc,vector<int> idx){
 	for(int i=0;i<N;i++){
 		if(idx[i]==wordloc) return true;
@@ -24,37 +22,45 @@ string randword(Words w,int stage=0){
 	} 	
 }
 
-void inputword(string w,float &t,string &cmd,player &p){
+void inputword(variable &v,Unit &p){
 	float time;
 	string textAns;
 	clock_t start,End;
 	start=clock();
 	cout<<"\n"<<setw(8)<<"						Your words : ";
 	cin>>textAns;
-	cmd=textAns;
+	v.cmd=textAns;
 	End=clock();
 	time=((float)(End-start)/CLOCKS_PER_SEC)+0.02;
 	cout<<fixed<<setprecision(3);
-	if(time>10) {
-		cout<<"					fail"<<"	your time = "<<time<<"				"<<endl;
-		cout<<"						Your score is "<<p.score<<"				"<<endl;
-	}
-	else if(time<=10&&textAns==w){
-		p.score++;
-		cout<<"					    correct"<<" your time = "<<time<<"		"<<endl;
-		cout<<"						Your score is "<<p.score<<"				"<<endl;	
-		
-	}
-	else if(textAns=="exit") {
+	if(textAns=="exit") {
+		keepscore(v.score,p.hero.score);
+		keeptime(v.time,p.hero.time);
+		sortRank(v);
+		int N=v.name.size();
 		cout<<"\n"<<"						Thanks for playing!!"<<"				"<<endl;
 		cout<<"\n"<<"	---------------------------------------------------------------------------------------------"<<endl;
 		cout<<"\n"<<"	  Rank			player			 score			time"<<endl;
-		cout<<" 	  "<<" 1"<<"  			"<<p.name<<"	 		   "<<p.score<<"			"<<p.time<<endl;
+		for(int i=0;i<N;i++){
+			cout<<" 	  "<<" "<<i+1<<"  			"<<v.name[i]<<"	 		   "<<v.score[i]<<"			"<<v.time[i]<<endl;
+		}
+
+		
+	}
+	else if(time<=10&&textAns==v.word){
+		p.hero.score++;
+		cout<<"					    correct"<<" your time = "<<time<<"		"<<endl;
+		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;	
+		
+	}
+	else if(time>10) {
+		cout<<"					fail"<<"	your time = "<<time<<"				"<<endl;
+		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;
 	}
 	else {
 		cout<<"						    incorrect"<<endl;
-		cout<<"						Your score is "<<p.score<<"				"<<endl;
+		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;
 	}
-	p.time+=time;
-	t=time;
+	p.hero.time+=time;
+	v.timer=time;
 }			
