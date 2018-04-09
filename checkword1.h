@@ -5,7 +5,7 @@ bool check_same_word(int N,int wordloc,vector<int> idx){
 	}
 }
 
-string randword(Words w,int stage=0){
+string randword(Words w,int &stage){
 	int Ez=w.easyword.size();
 	int Nm=w.medword.size();
 	int Hd=w.hardword.size();
@@ -17,17 +17,18 @@ string randword(Words w,int stage=0){
 	else{
 		idx.push_back(wloc);	
 		string wordEz=w.easyword[wloc];
-		cout<< "\n"<<"						>>  "<<wordEz <<"  <<"<<endl;
+		
+		cout<< "\n\n\n"<<"				STAGE "<<stage<<"		>>  "<<wordEz <<"  <<"<<endl;
 		return wordEz;
 	} 	
 }
 
-void inputword(variable &v,Unit &p){
+void inputword(variable &v,Unit &p,Unit &m){
 	float time;
 	string textAns;
 	clock_t start,End;
 	start=clock();
-	cout<<"\n"<<setw(8)<<"						Your words : ";
+	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n"<<setw(8)<<"						Your words : ";
 	cin>>textAns;
 	v.cmd=textAns;
 	End=clock();
@@ -38,7 +39,7 @@ void inputword(variable &v,Unit &p){
 		keeptime(v.time,p.hero.time);
 		sortRank(v);
 		int N=v.name.size();
-		cout<<"\n"<<"						Thanks for playing!!"<<"				"<<endl;
+		cout<<"\n"<<"					|||||| Thanks for playing!! ||||||"<<"				"<<endl;
 		cout<<"\n"<<"	---------------------------------------------------------------------------------------------"<<endl;
 		cout<<"\n"<<"	  Rank			player			 score			time"<<endl;
 		for(int i=0;i<N;i++){
@@ -50,8 +51,8 @@ void inputword(variable &v,Unit &p){
 	else if(time<=10&&textAns==v.word){
 		p.hero.score++;
 		cout<<"					    correct"<<" your time = "<<time<<"		"<<endl;
-		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;	
-		
+		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;
+		m.hp-=20;
 	}
 	else if(time>10) {
 		cout<<"					fail"<<"	your time = "<<time<<"				"<<endl;

@@ -1,15 +1,5 @@
 #include <fstream>
 
-struct variable{
-	vector<string> name ;
-    vector<int> score ;
-    vector<float> time;
-    string word,cmd;
-	string status;
-	char newtry;
-    int R=0;
-    float timer;
-};
 
 
 void keepname(vector<string> &name,string N){
@@ -33,7 +23,16 @@ struct Words{
 };
 
 
-void keepinfo(Words &w){
+void keepinfo(Words &w,variable &v){
+	ifstream Monster("monstername.txt");
+	string mon;
+	while(getline(Monster,mon)){
+    	string ws;
+    	int start=0;
+    	int end=mon.find_first_of(" ");
+    	ws=mon.substr(start,end-start);
+        keepword(v.monstername,mon) ;
+    }
     ifstream word1("easywords.txt") ;
     string s ;
     while(getline(word1,s)){
@@ -64,11 +63,17 @@ void keepinfo(Words &w){
     word1.close() ;
     word2.close() ;
     word3.close() ;
+    Monster.close() ;
 }
 
 void sortRank(variable &v){
 	for(int i=0;i<v.score.size()-1;i++){
 		if(v.score[i]<v.score[i+1]) {
+			swap(v.score[i],v.score[i+1]);
+			swap(v.name[i],v.name[i+1]);
+			swap(v.time[i],v.time[i+1]);
+		}
+		if(v.score[i]==v.score[i+1]&&v.time[i]>v.time[i+1]){
 			swap(v.score[i],v.score[i+1]);
 			swap(v.name[i],v.name[i+1]);
 			swap(v.time[i],v.time[i+1]);

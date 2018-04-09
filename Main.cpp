@@ -1,4 +1,5 @@
 using namespace std;
+
 #include<iostream>
 #include<ctime>
 #include<string>
@@ -6,27 +7,41 @@ using namespace std;
 #include<cstdlib>
 #include <algorithm>
 #include<iomanip>
+
 #include"status.h"
 #include "infotovector.h"
 #include "checkword1.h"
 
 
 int main(){
-	Words allword;
+	Words allword; 
 	variable v;
-	keepinfo(allword) ; 
+	keepinfo(allword,v) ; 
 	do{
 		Unit typer;
 		cout<<"	---------------------------------------------------------------------------------------------"<<endl;
     	cout<<"						Enter your name : " ;
-    	cin >> typer.hero.name ;
+    	cin >> typer.hero.name;
+    	cout<<"\n\n\n\n"<<endl;
     	keepname(v.name,typer.hero.name);
     //start typing
-	    do{
-		    v.word=randword(allword);
-			inputword(v,typer);	
+    do{
+    	Unit Monster;
+    	Monster.namein(v,1,v.m);
+    	do{
+    		cout<<"	---------------------------------------------------------------------------------------------"<<endl;
+    		cout<<"\n						<> Monster : "<<Monster.name<<"<>"<<endl;
+			cout<<"						 <> HP "<<Monster.hp<<" / "<<Monster.hpmax<<" <>"<<endl;
+    		cout<<"\n						<<< Your HP "<<typer.hp<<" / "<<typer.hpmax<<" >>>"<<endl;
+		    v.word=randword(allword,v.stage);
+			inputword(v,typer,Monster);	
 			if(v.cmd=="exit"||v.cmd=="newtry") break;
-		}while(v.status!="dead");
+		}while(Monster.hp>0);
+		if(v.cmd=="exit"||v.cmd=="newtry") break;
+		v.stage++;
+		v.m++;
+	}while(v.status!="dead");
+    	
 		cout<<"\n"<<"					Do you want to try again? Y/N : ";
 		cin>>v.newtry;
 		v.newtry=toupper(v.newtry);
