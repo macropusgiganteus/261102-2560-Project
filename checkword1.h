@@ -48,19 +48,21 @@ void inputword(variable &v,Unit &p,Unit &m){
 
 		
 	}
-	else if(time<=10&&textAns==v.word){
+	else if(time<=5&&textAns==v.word){
 		p.hero.score++;
 		cout<<"					    correct"<<" your time = "<<time<<"		"<<endl;
 		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;
-		m.hp-=20;
+		p.attack(m);
 	}
-	else if(time>10) {
+	else if(time>5) {
 		cout<<"					fail"<<"	your time = "<<time<<"				"<<endl;
 		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;
+		m.attack(p);
 	}
 	else {
 		cout<<"						    incorrect"<<endl;
 		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;
+		m.attack(p);
 	}
 	p.hero.time+=time;
 	v.timer=time;

@@ -21,12 +21,11 @@ class Unit {
 	public :
 		player hero;
 		string name;
-		int hp=100;
-		int hpmax=100;
+		int hp;
+		int hpmax;
 		int atk;
 		int def;
 		int beattack(int);
-		int upgrade(int,int);
 		int attack(Unit &);	
 		void namein(variable &,int,int );
 		Unit();
@@ -40,6 +39,8 @@ Unit::Unit(){
 	srand(time(0));
 	hpmax=rand()%100+100;
 	hp=hpmax;
+	atk=rand()%10+20;
+	def=rand()%10+5;
 }
 
 
@@ -53,9 +54,7 @@ int Unit::beattack(int a){
 }
 
 int Unit::attack(Unit &b){
-	return beattack(atk);
+	return b.beattack(atk);
 }
 
-int Unit::upgrade(int c,int d){
-	
-}
+
