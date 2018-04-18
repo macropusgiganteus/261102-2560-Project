@@ -26,7 +26,8 @@ class Unit {
 		int atk;
 		int def;
 		int beattack(int);
-		int attack(Unit &);	
+		int attack(Unit &);
+		void upgrade();
 		void namein(variable &,int,int );
 		Unit();
 };
