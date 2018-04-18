@@ -28,7 +28,9 @@ void inputword(variable &v,Unit &p,Unit &m){
 	string textAns;
 	clock_t start,End;
 	start=clock();
-	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n"<<setw(8)<<"						Your words : ";
+	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n"<<endl;
+	cout<<"\n				<<<  HP : "<<p.hp<<" / "<<p.hpmax<<" >>>  ATK : "<<p.atk<<" DEF : "<<p.def<<endl;
+	cout<<setw(8)<<"						Your words : ";
 	cin>>textAns;
 	v.cmd=textAns;
 	End=clock();
@@ -41,7 +43,7 @@ void inputword(variable &v,Unit &p,Unit &m){
 		int N=v.name.size();
 		cout<<"\n"<<"					|||||| Thanks for playing!! ||||||"<<"				"<<endl;
 		cout<<"\n"<<"	---------------------------------------------------------------------------------------------"<<endl;
-		cout<<"\n"<<"	  Rank			player			 score			time"<<endl;
+		cout<<"\n"<<"	  RANK			PLAYER			 STAGE			TIME"<<endl;
 		for(int i=0;i<N;i++){
 			cout<<" 	  "<<" "<<i+1<<"  			"<<v.name[i]<<"	 		   "<<v.score[i]<<"			"<<v.time[i]<<endl;
 		}
@@ -49,21 +51,24 @@ void inputword(variable &v,Unit &p,Unit &m){
 		
 	}
 	else if(time<=5&&textAns==v.word){
-		p.hero.score++;
 		cout<<"					    correct"<<" your time = "<<time<<"		"<<endl;
 		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;
-		p.attack(m);
+		v.T=true;
+		v.dmg=p.attack(m);
 	}
 	else if(time>5) {
 		cout<<"					fail"<<"	your time = "<<time<<"				"<<endl;
 		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;
-		m.attack(p);
+		v.T=false;
+		v.dmg=m.attack(p);
 	}
 	else {
 		cout<<"						    incorrect"<<endl;
 		cout<<"						Your score is "<<p.hero.score<<"				"<<endl;
-		m.attack(p);
+		v.T=false;
+		v.dmg=m.attack(p);
 	}
+	v.ATK=true;
 	p.hero.time+=time;
 	v.timer=time;
 }			

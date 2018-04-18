@@ -1,6 +1,6 @@
 struct player{
 	string name;
-	int score=0;
+	int score=1;
 	float time=0;
 };
 
@@ -14,6 +14,8 @@ struct variable{
     int R=0,stage=1,m=0;
     float timer;
     vector<string> monstername;
+    int dmg;
+    bool T,ATK;
 };
 
 
@@ -60,40 +62,39 @@ int Unit::attack(Unit &b){
 }
 
 void Unit::SelectHero(){
-    cout << "------------------------------cat------------------------------" << endl ;
-    cout << "hpmax = 99\t"  << "heal = 20\t" << "atk = 30\t" << "def = 20" << endl ;
-    cout << "---------------------------------------------------------------\n" ;
-    cout << "-----------------------------kekko-----------------------------" << endl ;
-    cout << "hpmax = 75\t"  << "heal = 30\t" << "atk =25\t" << "def = 15" << endl ;
-    cout << "---------------------------------------------------------------\n" ;
-    cout << "------------------------------dd-------------------------------" << endl ;
-    cout << "hpmax = 85\t"  << "heal = 25\t" << "atk =25\t" << "def = 20" << endl ;
-    cout << "---------------------------------------------------------------\n" ;
+    cout << "	-----------------------------cat------------------------------" << endl ;
+    cout << "		[1]	hpmax = 99\t"  << "atk = 30\t" << "def = 20" << endl ;
+    cout << "	---------------------------------------------------------------\n" ;
+    cout << "	----------------------------kekko-----------------------------" << endl ;
+    cout << "		[2]	hpmax = 75\t"  <<  "atk =25\t" << "def = 15" << endl ;
+    cout << "	---------------------------------------------------------------\n" ;
+    cout << "	-----------------------------dd-------------------------------" << endl ;
+    cout << "		[3]	hpmax = 85\t"  <<  "atk =25\t" << "def = 20" << endl ;
+    cout << "	---------------------------------------------------------------\n" ;
     int x ;
-    cout << "Please select your hero" ;
+    cout << "					Please select your hero : " ;
     cin >> x ;
     switch(x){
         case 1 :{
             	hpmax = 99 ;
-            	heal = 20 ;
             	atk = 30 ;
             	def = 20 ;
 	    	break ;
         }
         case 2 :{
            	hpmax = 75 ;
-           	heal = 30 ;
             	atk = 25 ;
             	def = 15 ;
 		break ;
         }
         case 3 :{
             	hpmax = 85 ;
-           	heal = 25 ;
             	atk = 25 ;
             	def = 20 ;
 		break ;
         }
+ }
+ 	hp=hpmax;
 }
 
 void Unit::upgrade(){
@@ -122,4 +123,4 @@ void Unit::upgrade(){
 			break;
 		}
 	}
-	
+}
