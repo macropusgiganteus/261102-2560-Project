@@ -24,9 +24,10 @@ class Unit {
 		int hp;
 		int hpmax;
 		int atk;
-		int def;
+		int def; 
 		int beattack(int);
 		int attack(Unit &);
+		void SelectHero();
 		void upgrade();
 		void namein(variable &,int,int );
 		Unit();
@@ -56,6 +57,43 @@ int Unit::beattack(int a){
 
 int Unit::attack(Unit &b){
 	return b.beattack(atk);
+}
+
+void Unit::SelectHero(){
+    cout << "------------------------------cat------------------------------" << endl ;
+    cout << "hpmax = 99\t"  << "heal = 20\t" << "atk = 30\t" << "def = 20" << endl ;
+    cout << "---------------------------------------------------------------\n" ;
+    cout << "-----------------------------kekko-----------------------------" << endl ;
+    cout << "hpmax = 75\t"  << "heal = 30\t" << "atk =25\t" << "def = 15" << endl ;
+    cout << "---------------------------------------------------------------\n" ;
+    cout << "------------------------------dd-------------------------------" << endl ;
+    cout << "hpmax = 85\t"  << "heal = 25\t" << "atk =25\t" << "def = 20" << endl ;
+    cout << "---------------------------------------------------------------\n" ;
+    int x ;
+    cout << "Please select your hero" ;
+    cin >> x ;
+    switch(x){
+        case 1 :{
+            	hpmax = 99 ;
+            	heal = 20 ;
+            	atk = 30 ;
+            	def = 20 ;
+	    	break ;
+        }
+        case 2 :{
+           	hpmax = 75 ;
+           	heal = 30 ;
+            	atk = 25 ;
+            	def = 15 ;
+		break ;
+        }
+        case 3 :{
+            	hpmax = 85 ;
+           	heal = 25 ;
+            	atk = 25 ;
+            	def = 20 ;
+		break ;
+        }
 }
 
 void Unit::upgrade(){
