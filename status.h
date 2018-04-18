@@ -57,4 +57,30 @@ int Unit::attack(Unit &b){
 	return b.beattack(atk);
 }
 
-
+void Unit::upgrade(){
+	int key;
+	cout<<"1.Atk   2.Def   3.HP max  4.Heal"<<endl;
+	cout<<"Pass number to upgrade your hero: "<<endl;
+	cin>>key;
+	switch(key){
+		case 1:{
+			atk+=50;
+			break;
+		}
+		case 2:{
+			def+=50;
+			break;
+		}
+		case 3:{
+			hpmax+=50;
+			break;
+		}
+		case 4:{
+			
+			hp+=50;
+			if(hp > hpmax) hp=hpmax;
+			
+			break;
+		}
+	}
+	
