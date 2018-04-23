@@ -48,7 +48,7 @@ void keepinfo(Words &w,variable &v){
     	string ws;
     	int start=0;
     	int end=s2.find_first_of(" ");
-    	ws=s.substr(start,end-start);
+    	ws=s2.substr(start,end-start);
         keepword(w.medword,ws) ;
     }
     ifstream word3("hardwords.txt") ;

@@ -15,7 +15,6 @@ using namespace std;
 
 
 int main(){
-	PlaySound(TEXT("Correct Answer Sound Effect.wav"),NULL,SND_SYNC);
 	Words allword; 
 	variable v;
 	keepinfo(allword,v) ; 
