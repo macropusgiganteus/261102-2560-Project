@@ -7,7 +7,7 @@ using namespace std;
 #include<cstdlib>
 #include <algorithm>
 #include<iomanip>
-
+#include<fstream>
 #include"status.h"
 #include "infotovector.h"
 #include "checkword1.h"
@@ -16,12 +16,50 @@ using namespace std;
 int main(){
 	Words allword; 
 	variable v;
-	keepinfo(allword,v) ; 
+	keepinfo(allword,v) ;
+	ifstream fence("charactor\\fence.txt");
+	string fence1;
+	while(getline(fence,fence1)){
+	
+		cout<<"    "<<fence1<<fence1<<fence1<<fence1<<fence1<<fence1<<fence1<<endl;
+	}
+	fence.close();
+		cout<<"\n"; 
+	ifstream name("charactor\\name.txt");
+	string namegame;
+	while(getline(name,namegame)){
+	
+		cout<<"				"<<namegame<<endl;
+	}
+	cout<<endl;
+	
+	ifstream fences("charactor\\fence.txt");
+	while(getline(fences,fence1)){
+	
+		cout<<"    "<<fence1<<fence1<<fence1<<fence1<<fence1<<fence1<<fence1<<endl;
+	}
+	fence.close();
+	
+	ifstream st("charactor\\start.txt");
+	string st1;
+	while(getline(st,st1)){
+	
+		cout<<"  		       "<<st1<<endl;
+	}
+	st.close();
+	
+	cin.get();
 	do{
 		Unit typer;
 		system("cls");
-		cout<<"	---------------------------------------------------------------------------------------------"<<endl;
-    	cout<<"						Enter your name : " ;
+		for(int i=0;i<422;i++){
+			cout<<"o";
+			
+			}
+		
+		cout<<endl;
+		cout<<"												...START GAME...\n"<<endl; 
+    	cout<<"												ENTER YOUR NAME : " ;
     	cin >> typer.hero.name;
     	cout<<"\n\n\n\n"<<endl;
     	keepname(v.name,typer.hero.name);
@@ -33,7 +71,7 @@ int main(){
     	Monster.namein(v,1,v.m);
     	do{
     		system("cls");
-    		cout<<"	---------------------------------------------------------------------------------------------"<<endl;
+    		cout<<"---------------------------------------------------------------------------------------------"<<endl;
     		if(v.ATK){
     			if(v.T) cout<<"				You attacked "<<Monster.name<<" with "<<v.dmg<<" damage"<<endl;
     			else cout<<"				You are attacked by "<<Monster.name<<" with "<<v.dmg<<" damage"<<endl;
@@ -60,5 +98,3 @@ int main(){
 	}while(v.newtry!='N');
 	return 0;
 }
-
-
