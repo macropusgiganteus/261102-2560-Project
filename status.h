@@ -1,6 +1,6 @@
 struct player{
 	string name;
-	int score=1;
+	int score= 1;
 	float time=0;
 };
 
@@ -62,35 +62,48 @@ int Unit::attack(Unit &b){
 }
 
 void Unit::SelectHero(){
-    cout << "	-----------------------------cat------------------------------" << endl ;
+	ifstream kit("charactor\\kitty.txt");
+	string kitty;
+	while(getline(kit,kitty)){
+		cout<<"		"<<kitty<<endl;
+	}
+    cout << "\n"<<"	---------------------------Hello Kitty-------------------------" << endl ;
     cout << "		[1]	hpmax = 99\t"  << "atk = 30\t" << "def = 20" << endl ;
-    cout << "	---------------------------------------------------------------\n" ;
-    cout << "	----------------------------kekko-----------------------------" << endl ;
+    cout << "	---------------------------------------------------------------\n\n" ;
+    
+    ifstream ku("charactor\\kuromi.txt");
+	string kuromi;
+	while(getline(ku,kuromi)){
+		cout<<"		"<<kuromi<<endl;
+	}
+    cout << "	-----------------------------Kuromi----------------------------" << endl ;
     cout << "		[2]	hpmax = 75\t"  <<  "atk =25\t" << "def = 15" << endl ;
     cout << "	---------------------------------------------------------------\n" ;
-    cout << "	-----------------------------dd-------------------------------" << endl ;
+    cout << "	-----------------------------Badzmaru--------------------------" << endl ;
     cout << "		[3]	hpmax = 85\t"  <<  "atk =25\t" << "def = 20" << endl ;
-    cout << "	---------------------------------------------------------------\n" ;
+    cout << "	---------------------------------------------------------------\n\n" ;
+    kit.close();
+    
     int x ;
     cout << "					Please select your hero : " ;
     cin >> x ;
     switch(x){
         case 1 :{
-            	hpmax = 99 ;
-            	atk = 30 ;
-            	def = 20 ;
+            	hpmax = 65;
+            	atk = 20 ;
+            	def = 15 ;
 	    	break ;
         }
         case 2 :{
-           	hpmax = 75 ;
-            	atk = 25 ;
-            	def = 15 ;
+           	hpmax = 35 ;
+            	atk = 55;
+            	def = 10  ;
 		break ;
         }
         case 3 :{
-            	hpmax = 85 ;
-            	atk = 25 ;
-            	def = 20 ;
+            	hpmax =35 ;
+            	atk = 35;
+            	def = 30;
 		break ;
         }
  }
