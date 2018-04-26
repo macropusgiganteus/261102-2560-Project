@@ -921,7 +921,6 @@ salt
 salute
 same
 sample
-sanction
 sand
 sane
 sauce
@@ -958,13 +957,11 @@ seem
 segment
 seldom
 select
-semester
 senate
 send
 senior
 sense
 septic
-sequence
 series
 serious
 serve
@@ -1083,7 +1080,6 @@ span
 spare
 spark
 speak
-special
 speech
 speed
 spell
@@ -1162,7 +1158,6 @@ strict
 strike
 string
 strong
-struggle
 study
 stuff
 stupid
